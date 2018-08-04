@@ -11,6 +11,7 @@
 ## File Describe
 * all_school_zzbm.py 获取所有学校自招报名数据
 * single_school_zzbm.py 获取某个学校的自招报名数据
+* all_school_gxzxbm.py 获取所有学校高效专项计划报名数据
 
 ## Note
 * 本项目托管在gitlab上，但欢迎任何方式贡献代码
