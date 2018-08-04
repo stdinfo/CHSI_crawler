@@ -2,9 +2,10 @@ import pycurl
 import io
 import re
 import time
+import sys
 
 last_page_start = 10000 #MAX item
-sleep_time = 1;
+sleep_time = 0;
 #url = "https://gaokao.chsi.com.cn/zzbm/mdgs/detail.action?oid=476737030&lx=1&start="
 
 f = open("data.xls","w+",encoding = 'utf-8')
@@ -38,8 +39,14 @@ def get_detail(url):
 		if(len(check) != 0):
 			break
 		tmp = re.findall('(?<=\s)\S*(?=\s*名单公示\s*</h3>)',text)
-		print("School Name:",tmp[0])
-		school_name = tmp[0]
+		try:
+			print("School Name:",tmp[0])
+			school_name = tmp[0]
+		except:
+			print("Unexpected error:", sys.exc_info()[0])
+			print("Try again!")
+			time.sleep(5)
+			continue
 		res = re.findall(pat,text);
 		l = len(res)
 		j=1
